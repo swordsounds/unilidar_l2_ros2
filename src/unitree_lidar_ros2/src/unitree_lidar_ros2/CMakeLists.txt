@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
 project(unitree_lidar_ros2)
 
+# Suppress warnings regarding PCL and FLAAN roots when in Docker container.
+if(POLICY CMP0074)
+  cmake_policy(SET CMP0074 NEW)
+endif()
+if(POLICY CMP0144)
+  cmake_policy(SET CMP0144 NEW)
+endif()
+
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)

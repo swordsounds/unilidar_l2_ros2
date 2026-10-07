@@ -16,7 +16,7 @@ def generate_launch_description():
     baudrate = LaunchConfiguration('baudrate')
 
     # Run unitree lidar
-    node1 = Node(
+    unilidar_node = Node(
         package='unitree_lidar_ros2',
         executable='unitree_lidar_ros2_node',
         name='unitree_lidar_ros2_node',
@@ -64,6 +64,6 @@ def generate_launch_description():
             'serial_port',
             default_value='/dev/serial/by-id/usb-1a86_USB_Single_Serial_5A64010467-if00'),
         DeclareLaunchArgument('baudrate', default_value='4000000'),
-        node1,
+        unilidar_node,
         rviz_node,
     ])

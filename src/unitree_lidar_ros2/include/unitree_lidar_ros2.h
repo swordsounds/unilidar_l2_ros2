@@ -15,7 +15,6 @@
 #include <algorithm>
 #include <chrono>
 
-#include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
 #include <pcl_conversions/pcl_conversions.h>
 
@@ -33,6 +32,12 @@
 
 // SDK
 #include "unitree_lidar_sdk_pcl.h"
+
+// TODO:
+// - Replace all std::bind's with lambdas
+// - Create another util file to shorten declarations and have more abstraction between libraries ex. rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr
+//   This needed to be shortened down to something more readable.
+// - Create a data structure for the list of declarations so it can be collaspable and such.
 
 using std::placeholders::_1;
 
@@ -247,6 +252,7 @@ void UnitreeLidarSDKNode::timer_callback()
         }
     }
 
+    // Error messaging for when Lidar connection unstable
     const auto now = std::chrono::steady_clock::now();
     if (now - last_data_time_ >= std::chrono::seconds(5) &&
         now - last_warning_time_ >= std::chrono::seconds(10))

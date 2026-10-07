@@ -5,3 +5,6 @@ build
 
 # Ignore vscode settings
 .vscode
+
+# Ignore extra package
+unilidar_sdk2
